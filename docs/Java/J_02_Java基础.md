@@ -571,7 +571,7 @@ abstract class AbstractStringBuilder implements Appendable, CharSequence {
 - 单线程操作字符串缓冲区下操作大量数据: 适用 `StringBuilder`
 - 多线程操作字符串缓冲区下操作大量数据: 适用 `StringBuffer`
 
-### String 为什么是不可变的?
+### 2. String 为什么是不可变的?
 
 `String` 类中使用 `final` 关键字修饰字符数组来保存字符串，~~所以`String` 对象是不可变的。~~
 
@@ -620,7 +620,7 @@ public final class String implements java.io.Serializable, Comparable<String>, C
 >
 > 这是官方的介绍：https://openjdk.java.net/jeps/254 。
 
-### 2. 字符串拼接用“+” 还是 StringBuilder?
+### 3. 字符串拼接用“+” 还是 StringBuilder?
 
 Java 语言本身并不支持运算符重载，“+”和“+=”是专门为 String 类重载过的运算符，也是 Java 中仅有的两个重载过的运算符。
 
@@ -669,11 +669,11 @@ System.out.println(s);
 
 在 JDK 9 中，字符串相加“+”改为用动态方法 `makeConcatWithConstants()` 来实现，通过提前分配空间从而减少了部分临时对象的创建。然而这种优化主要针对简单的字符串拼接，如： `a+b+c` 。对于循环中的大量拼接操作，仍然会逐个动态分配内存（类似于两个两个 append 的概念），并不如手动使用 StringBuilder 来进行拼接效率高。这个改进是 JDK9 的 [JEP 280](https://openjdk.org/jeps/280) 提出的，关于这部分改进的详细介绍，推荐阅读这篇文章：还在无脑用 [StringBuilder？来重温一下字符串拼接吧](https://juejin.cn/post/7182872058743750715) 以及参考 [issue#2442](https://github.com/Snailclimb/JavaGuide/issues/2442)。
 
-### 3. String#equals() 和 Object#equals() 有何区别？
+### 4. String#equals() 和 Object#equals() 有何区别？
 
 `String` 中的 `equals` 方法是被重写过的，比较的是 String 字符串的值是否相等。 `Object` 的 `equals` 方法是比较的对象的内存地址。
 
-### 4. 字符串常量池的作用了解吗？
+### 5. 字符串常量池的作用了解吗？
 
 **字符串常量池** 是 JVM 为了提升性能和减少内存消耗针对字符串（String 类）专门开辟的一块区域，主要目的是为了避免字符串的重复创建。
 
@@ -686,7 +686,7 @@ String bb = "ab";
 System.out.println(aa==bb); // true
 ```
 
-### 5. String s1 = new String("abc");这句话创建了几个字符串对象？
+### 6. String s1 = new String("abc");这句话创建了几个字符串对象？
 
 先说答案：会创建 1 或 2 个字符串对象。
 
@@ -759,7 +759,7 @@ String s2 = new String("abc");
 
 这里就不对上面的字节码进行详细注释了，7 这个位置的 `ldc` 命令不会在堆中创建新的字符串对象“abc”，这是因为 0 这个位置已经执行了一次 `ldc` 命令，已经在堆中创建过一次字符串对象“abc”了。7 这个位置执行 `ldc` 命令会直接返回字符串常量池中字符串对象“abc”对应的引用。
 
-### 6. String#intern 方法有什么作用?
+### 7. String#intern 方法有什么作用?
 
 `String.intern()` 是一个 `native` (本地) 方法，用来处理字符串常量池中的字符串对象引用。它的工作流程可以概括为以下两种情况：
 
@@ -790,7 +790,7 @@ System.out.println(s3 == s4); // false
 System.out.println(s1 == s4); // true
 ```
 
-### 7. String 类型的变量和常量做“+”运算时发生了什么？
+### 8. String 类型的变量和常量做“+”运算时发生了什么？
 
 先来看字符串不加 `final` 关键字拼接的情况（JDK1.8）：
 
