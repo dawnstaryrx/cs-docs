@@ -101,3 +101,78 @@ class Solution {
 }
 ```
 
+## [202. 快乐数](https://leetcode.cn/problems/happy-number/)
+
+```java
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet<Integer> seen = new HashSet<>();
+        
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            n = getNext(n);
+        }
+        
+        return n == 1;
+    }
+    public int getNext(int number){
+        int res = 0;
+        while (number > 0) {
+            int digit = number % 10; 
+            res += digit * digit;
+            number /= 10; // 去掉最后一位数字
+        }
+        return res;
+    }
+}
+```
+
+## [219. 存在重复元素 II](https://leetcode.cn/problems/contains-duplicate-ii/)
+
+```java
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < nums.length; i++){
+            if(!map.containsKey(nums[i])){
+                map.put(nums[i], i);
+            } else {
+                if(i - map.get(nums[i]) <= k){
+                    return true;
+                } else {
+                    map.put(nums[i], i);
+                }
+            }
+        }
+        return false;
+    }
+}
+```
+
+## [128. 最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/)
+
+```java
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        // 如果输入数组为空，返回 0
+        if (nums.length == 0) {
+            return 0;
+        }
+        Arrays.sort(nums);
+        int maxLength = 1, nowLength = 1;
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i] == nums[i-1]) continue;
+            if(nums[i] == nums[i-1] + 1){
+                nowLength ++;
+                if(nowLength > maxLength){
+                    maxLength = nowLength;
+                }
+            } else {
+                nowLength = 1;
+            }
+        }
+        return maxLength;
+    }
+}
+```
+
