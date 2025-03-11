@@ -324,3 +324,38 @@ class Solution {
 }
 ```
 
+## [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/)
+
+```java
+class Solution {
+    public int trap(int[] height) {
+        int[] leftMax = new int[height.length];
+        int[] rightMax = new int[height.length];
+
+        int nowLeftMax = height[0];
+        for(int i = 0; i < height.length; i++){
+            if(height[i] >= nowLeftMax){
+                leftMax[i] = height[i];
+                nowLeftMax = height[i];
+            } else {
+                leftMax[i] = nowLeftMax;
+            }
+        }
+        int nowRightMax = height[height.length - 1];
+        for(int j = height.length - 1; j >= 0; j --){
+            if(height[j] >= nowRightMax){
+                rightMax[j] = height[j];
+                nowRightMax = height[j];
+            } else {
+                rightMax[j] = nowRightMax;
+            }
+        }
+        int res = 0;
+        for(int i = 0; i < height.length; i++){
+            res = res + Math.min(rightMax[i], leftMax[i]) - height[i];
+        }
+        return res;
+    }
+}
+```
+
