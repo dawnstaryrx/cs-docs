@@ -261,7 +261,7 @@ Thread[线程 2,5,main]waiting get resource1
 
 线程 A 通过 `synchronized (resource1)` 获得 `resource1` 的监视器锁，然后通过`Thread.sleep(1000);`让线程 A 休眠 1s 为的是让线程 B 得到执行然后获取到 `resource2` 的监视器锁。线程 A 和线程 B 休眠结束了都开始企图请求获取对方的资源，然后这两个线程就会陷入互相等待的状态，这也就产生了死锁。
 
-### 解决死锁的方法
+### 5. 解决死锁的方法
 
 解决死锁的方法可以从多个角度去分析，一般的情况下，有**预防，避免，检测和解除四种**。
 
@@ -361,11 +361,11 @@ Thread[线程 2,5,main]waiting get resource1
 
 假设两块相邻的内存块都被释放，系统会将这两个内存块合并，进而形成一个更大的内存块，以便后续的内存分配。这样就可以减少内存碎片的问题，提高内存利用率。
 
-![伙伴系统（Buddy System）内存管理](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/linux-buddy-system.png)
+![image-20250312103510383](.\assets\image-20250312103510383.png)
 
 虽然解决了外部内存碎片的问题，但伙伴系统仍然存在内存利用率不高的问题（内部内存碎片）。这主要是因为伙伴系统只能分配大小为 2^n 的内存块，因此当需要分配的内存大小不是 2^n 的整数倍时，会浪费一定的内存空间。举个例子：如果要分配 65 大小的内存快，依然需要分配 2^7=128 大小的内存块。
 
-![伙伴系统内存浪费问题](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/buddy-system-memory-waste.png)
+![image-20250312103744838](.\assets\image-20250312103744838.png)
 
 对于内部内存碎片的问题，Linux 采用 **SLAB** 进行解决。
 
@@ -403,7 +403,7 @@ Thread[线程 2,5,main]waiting get resource1
 3. 程序运行过程中使用的所有数据或指令都要载入物理内存，根据局部性原理，其中很大一部分可能都不会用到，白白占用了宝贵的物理内存资源。
 4. ……
 
-#### [什么是虚拟地址和物理地址？](#什么是虚拟地址和物理地址)
+#### 什么是虚拟地址和物理地址？
 
 **物理地址（Physical Address）** 是真正的物理内存中地址，更具体点来说是内存地址寄存器中的地址。程序中访问的内存地址不是物理地址，而是 **虚拟地址（Virtual Address）** 。
 
@@ -411,7 +411,7 @@ Thread[线程 2,5,main]waiting get resource1
 
 操作系统一般通过 CPU 芯片中的一个重要组件 **MMU(Memory Management Unit，内存管理单元)** 将虚拟地址转换为物理地址，这个过程被称为 **地址翻译/地址转换（Address Translation）** 。
 
-![地址翻译过程](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/physical-virtual-address-translation.png)
+![image-20250312104327746](.\assets\image-20250312104327746.png)
 
 通过 MMU 将虚拟地址转换为物理地址后，再通过总线传到物理内存设备，进而完成相应的物理内存读写请求。
 

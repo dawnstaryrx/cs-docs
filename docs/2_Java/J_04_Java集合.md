@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Java集合1
+# Java集合
 
 ## 一、集合概述
 
