@@ -122,7 +122,23 @@ Spring支持编程式事务管理和声明式事务管理两种方式。
 4. DispatcherServlet调用HandlerAdapter（处理器适配器）
 5. HandlerAdapter经过适配调用具体的处理器（Handler/Controller）
 6. 方法添加了@ResponseBody
-7. 通过HttpMessageConvrter来返回结果转换为JSON并响应
+7. 通过HttpMessageConvrter来返回结果转换为JSON并响应、
+
+### 10. Spring框架常见注解
+
+Spring常见注解
+
+![image-20250326161325848](.\assets\image-20250326161325848.png)
+
+SpringMVC常见注解
+
+![image-20250326161544396](.\assets\image-20250326161544396.png)
+
+SpringBoot常见注解
+
+![image-20250326161609211](.\assets\image-20250326161609211.png)
+
+
 
 ## 二、SpringBoot
 
@@ -156,5 +172,6 @@ Spring支持编程式事务管理和声明式事务管理两种方式。
    1. @SpringBootConfiguration
    2. @EnableAutoConfiguration
    3. @ComponentScan
-2. 其中，@EnableAutoConfiguration是实现自动化配置的核心注解。该注解通过@Import注解导入对应
+2. 其中，@EnableAutoConfiguration是实现自动化配置的核心注解。该注解通过@Import注解导入对应的配置选择器。内部就是读取了该项目和该项目引用的Jar包的classpath路径下META-INF/spring.factories文件中的所配置的类的全类名。在这些配置类中所定义的Bean会根据条件注解所指定的条件来决定是否需要将其导入到Spring容器中。
+3. 条件判断会有像@ConditionalOnClass这样的注解，判断是否有相对应的class文件，如果有则加载该类，把这个配置类的所有Bean放入spring容器中使用。
 
