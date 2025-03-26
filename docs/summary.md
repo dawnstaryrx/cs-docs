@@ -1,7 +1,8 @@
 ---
 sidebar_position: 6
-slug: /
 ---
+
+# 面试总结
 
 # 1. 中科闻歌
 
