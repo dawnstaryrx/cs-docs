@@ -1,10 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 1
 ---
 
-# 面试总结
-
-# 1. 中科闻歌
+# 中科闻歌
 
 ## 1. 面向对象的三大特征，多态
 
