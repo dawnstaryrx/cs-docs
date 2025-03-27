@@ -116,13 +116,15 @@ Spring支持编程式事务管理和声明式事务管理两种方式。
 
 ### 9. SpringMVC执行流程
 
+使用SpringMVC后，所有的请求都需要经过DispatcherServlet前端控制器，该类提供了一个doDispatcher方法，有关请求处理和结果响应的所有流程都在该方法中完成。
+
 1. 用户发送请求到前端控制器DispatcherServlet
 2. DispatcherServlet收到请求调用HandlerMapping（处理器映射器）
 3. HandlerMapping找到具体的处理器，生成处理器对象及处理器拦截器（如果有），再一起返回给DispatcherServlet
 4. DispatcherServlet调用HandlerAdapter（处理器适配器）
 5. HandlerAdapter经过适配调用具体的处理器（Handler/Controller）
 6. 方法添加了@ResponseBody
-7. 通过HttpMessageConvrter来返回结果转换为JSON并响应、
+7. 通过HttpMessageConverter来返回结果转换为JSON并响应、
 
 ### 10. Spring框架常见注解
 
@@ -144,7 +146,7 @@ SpringBoot常见注解
 
 ### 1. SpringBoot启动流程
 
-
+![image-20250327155248311](.\assets\image-20250327155248311.png)
 
 
 
