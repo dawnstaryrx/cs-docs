@@ -468,11 +468,38 @@ workQueue：工作队列。当没有空闲核心线程时，新来任务会加�
 
 ### 4. 线程池的种类有哪些
 
-
+- newFixedThreadPool：创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待
+- newSingleThreadExecutor：创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，确保所有任务按照指定顺序执行
+- newCachedThreadPool：创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程
+- newScheduledThreadPool：可以执行延迟任务的线程池，支持定时及周期性任务执行
 
 ### 5. 为什么不建议用Executors创建线程池
 
-
+![image-20250418151641643](.\assets\image-20250418151641643.png)
 
 ## 四、使用场景
 
+### 1. 线程池的使用场景/你们项目中哪里用到了线程池
+
+
+
+### 2. 如何控制某个方法允许并发访问线程的数量
+
+Semaphore信号量，是JUC包下的一个工具类，底层的AQS，我们可以通过其限制执行的线程数量。
+
+1. 创建Semaphore对象，可以给一个容量
+2. acquire()可以请求一个信号量，这时候的信号量个数-1
+3. release()释放一个信号量，此时信号量个数+1
+
+### 3. 谈谈你对ThreadLocal的理解
+
+1. ThreadLocal可以实现资源对象的线程隔离，让每个线程各用各的资源对象，避免争用引发的线程安全问题
+2. ThreadLocal同时实现了线程内的资源共享
+3. 每个线程内有一个ThreadLocalMap类型的成员变量，用来存储资源对象
+   1. 调用set方法，就是以ThreadLocal自己作为key，资源对象作为value，放入当前线程的ThreadLocalMap集合中
+   2. 调用get方法，就是以ThreadLocal自己作为key，到当前线程中查找关联的资源值
+   3. 调用remove方法，就是以ThreadLocal自己作为key，移除当前线程关联的资源值
+4. ThreadLocal内存泄露问题
+   1. ThreadLocalMap中的key是弱引用，值为强引用；
+   2. key会被GC释放内存，关联value的内存不会释放；
+   3. 建议主动remove释放key,value
