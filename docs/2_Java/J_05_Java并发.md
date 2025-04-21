@@ -408,9 +408,18 @@ Monitor的结构包括WaitSet，EntryList，Owner。
 
 并发编程的三大特性
 
-- 原子性 synchronized lock
-- 内存可见性 volatile synchronized lock
-- 有序性 volatile
+- 原子性
+  - 一个或者多个操作在 CPU 执行的过程中不被其他线程干扰 
+  - synchronized lock
+
+- 内存可见性
+  - 一个线程对共享变量的修改，另外一个线程能够立刻看到 
+  - volatile synchronized lock
+
+- 有序性
+  - 程序执行的顺序按照代码的先后顺序执行 
+  - volatile
+
 
 ### 11. 你谈谈对CAS的理解
 
