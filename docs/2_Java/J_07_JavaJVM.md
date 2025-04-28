@@ -58,7 +58,7 @@ sidebar_position: 7
 - 方法区是各个线程共享的内存区域
 - 主要存储类的信息、运行时常量池
 - 虚拟机启动的时候创建，关闭虚拟机时释放
-- 如果方法区域中的内存无法满足分配请求，则会抛出OutOfMemoryError:Metaspace
+- 如果方法区中的内存无法满足分配请求，则会抛出OutOfMemoryError:Metaspace
 
 ### 5. 介绍一下运行时常量池？
 
