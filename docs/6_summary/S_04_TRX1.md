@@ -24,7 +24,7 @@ sidebar_position: 4
 #### ✅ 抽象类定义：
 
 ```
-java复制编辑public abstract class Animal {
+public abstract class Animal {
     protected String name;
 
     public Animal(String name) {
@@ -258,6 +258,8 @@ public class ChainTest {
     }
 }
 ```
+
+Springboot中用到了哪些设计模式？
 
 ## 3. AOP
 
