@@ -140,7 +140,13 @@ SpringBoot常见注解
 
 ![image-20250326161609211](.\assets\image-20250326161609211.png)
 
+### 11. Spring和Springboot的区别？
 
+- Spring是一个开源容器框架， 其核心就是控制反转 (IOC),和面向切面 (AOP), 简单的说就是一个分层的轻量级开源框架
+
+- Spring Boot它是一个基于Spring的快速开发框架，可以帮助开发者快速构建基于Spring的应用程序
+
+- SpringBoot的核心就是 **自动配置** 和 **依赖版本** 管理
 
 ## 二、SpringBoot
 
