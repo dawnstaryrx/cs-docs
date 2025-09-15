@@ -26,8 +26,8 @@ sidebar_position: 6
 ### 2. `@Autowired`和`@Resource`有什么区别？
 
 - `@Autowired` 是 Spring 提供的注解，`@Resource` 是 JDK 提供的注解。
-- `Autowired` 默认的注入方式为`byType`（根据类型进行匹配），`@Resource`默认注入方式为 `byName`（根据名称进行匹配）。
-- 当一个接口存在多个实现类的情况下，`@Autowired` 和`@Resource`都需要通过名称才能正确匹配到对应的 Bean。`Autowired` 可以通过 `@Qualifier` 注解来显式指定名称，`@Resource`可以通过 `name` 属性来显式指定名称。
+- `@Autowired` 默认的注入方式为`byType`（根据类型进行匹配），`@Resource`默认注入方式为 `byName`（根据名称进行匹配）。
+- 当一个接口存在多个实现类的情况下，`@Autowired` 和`@Resource`都需要通过名称才能正确匹配到对应的 Bean。`@Autowired` 可以通过 `@Qualifier` 注解来显式指定名称，`@Resource`可以通过 `name` 属性来显式指定名称。
 - `@Autowired` 支持在构造函数、方法、字段和参数上使用。`@Resource` 主要用于字段和方法上的注入，不支持在构造函数或参数上使用。
 
 ### 3. Spring框架中的单例Bean是线程安全的吗？
@@ -140,13 +140,53 @@ SpringBoot常见注解
 
 ![image-20250326161609211](.\assets\image-20250326161609211.png)
 
-### 11. Spring和Springboot的区别？
+### 11. Spring、SpringMVC、Springboot和SpringCloud的区别？
 
-- Spring是一个开源容器框架， 其核心就是控制反转 (IOC),和面向切面 (AOP), 简单的说就是一个分层的轻量级开源框架
+ **Spring Framework**
 
-- Spring Boot它是一个基于Spring的快速开发框架，可以帮助开发者快速构建基于Spring的应用程序
+- **概述**：Spring 是一个开源的企业级应用程序开发框架，提供了全面的基础设施支持。它的核心特性包括依赖注入（DI）和面向切面编程（AOP）。
+- 功能
+  - 提供了 IoC（控制反转）容器，帮助管理对象的生命周期。
+  - 支持事务管理。
+  - 提供与不同持久化技术（如 JDBC、JPA、Hibernate）的集成。
+  - 提供了丰富的模块，如 Spring Security、Spring Data、Spring Batch 等。
 
-- SpringBoot的核心就是 **自动配置** 和 **依赖版本** 管理
+**Spring MVC**
+
+- **概述**：Spring MVC 是 Spring 框架的一部分，专注于构建基于 Web 的应用程序。它实现了 MVC（模型-视图-控制器）设计模式。
+- 功能
+  - 处理 HTTP 请求和响应。
+  - 提供了控制器、视图解析器和模型对象的支持。
+  - 支持 RESTful Web 服务的构建。
+  - 集成了数据绑定和验证功能。
+
+**Spring Boot**
+
+- **概述**：Spring Boot 是 Spring 框架的一个扩展，旨在简化 Spring 应用程序的开发过程。它提供了一种快速、无配置的方式来创建独立的、生产级别的 Spring 应用程序。
+- 功能
+  - 通过约定优于配置的原则，减少了大量的配置工作。
+  - 提供了内嵌的应用服务器（如 Tomcat、Jetty），使得应用程序可以独立运行。
+  - 提供了自动配置功能，能够根据项目的依赖自动配置 Spring 组件。
+  - 提供了 Spring Boot Starter，简化了依赖管理。
+
+**SpringCloud**
+
+- 概述：Spring Cloud 是一个为分布式系统提供开发工具的框架，主要用于构建微服务架构。它基于 Spring Framework，并与 Spring Boot 紧密集成。
+- 特性
+  - **服务发现**：通过 Eureka 或 Consul 等服务注册与发现工具，微服务可以动态地找到彼此。
+  - **负载均衡**：使用 Ribbon 或 Spring Cloud LoadBalancer 实现客户端负载均衡。
+  - **API 网关**：使用 Spring Cloud Gateway 或 Zuul 作为 API 网关，处理路由、过滤、负载均衡等。
+  - **配置管理**：使用 Spring Cloud Config 进行集中配置管理，支持动态刷新配置。
+  - **断路器**：通过 Hystrix 或 Resilience4j 实现断路器模式，提高系统的容错能力。
+  - **分布式追踪**：使用 Spring Cloud Sleuth 和 Zipkin 进行分布式系统的追踪，帮助监控和调试。
+  - **消息驱动微服务**：集成 RabbitMQ、Kafka 等消息中间件，支持异步消息传递。
+
+**总结**
+
+- **Spring** 是一个完整的企业级应用程序开发框架。
+- **Spring MVC** 是 Spring 的一个模块，专注于构建 Web 应用程序。
+- **Spring Boot** 是一个用于简化 Spring 应用程序开发的框架，使得构建和部署变得更加简单。
+- **Spring Cloud** 是一个用于构建和管理微服务架构的框架，提供了服务发现、负载均衡、配置管理、断路器等功能。它与 **Spring** 和 **Spring Boot** 紧密集成，简化了微服务的开发和运维。
 
 ## 二、SpringBoot
 
