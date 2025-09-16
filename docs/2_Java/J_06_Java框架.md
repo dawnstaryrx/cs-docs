@@ -194,25 +194,21 @@ SpringBoot常见注解
 
 ![image-20250327155248311](.\assets\image-20250327155248311.png)
 
-
-
 ### 2. IOC容器初始化流程
 
-
+![image-20250916093315729](.\assets\image-20250916093315729.png)
 
 ### 3. Bean生命周期
 
-
+![image-20250916093439277](.\assets\image-20250916093439277.png)
 
 ### 4. Bean循环依赖
 
-
-
-
+![image-20250916094310813](.\assets\image-20250916094310813.png)
 
 ### 5. SpringMVC执行流程
 
-
+![image-20250916094341685](.\assets\image-20250916094341685.png)
 
 ### 6. SpringBoot自动配置原理
 
